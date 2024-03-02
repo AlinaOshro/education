@@ -11,3 +11,27 @@
 Некую шпаргалку чтобы спустя время помогло бы тебе быстрее вспомнить
 
 # PostgreSQL 
+- [Подсказки по MarkDown1](https://skillbox.ru/media/code/yazyk-razmetki-markdown-shpargalka-po-sintaksisu-s-primerami/#stk-18)
+- [Подсказки по MarkDown2](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [JSON в Postgres](https://www.postgresql.org/docs/current/functions-json.html)
+
+Преимущество Postgres - специальные типы данных, позволяющие хранить JSON и индексировать значения для ускорения выборки 
+JSONB - бинарный формат, котрый эффективнее JSON-а хранит данные и позволяет создавать индексы на разичные часи JSON
+
+## Создание JSON с помощью SQL-запросов 
+```SQL
+SELECT json_build_object('name', 'Ivan', 'age', 24); 
+```
+
+## Преобразование JSON в JSONB 
+```SQL
+SELECT json_build_object('name', 'Ivan', 'age', 24)::jsonb->'age' as age; 
+```
+
+ где `::` преобразует json в jsonb
+
+`->` позволяет обратиться к конкретному полю 
+
+as age - название колонки 
+
+`->>` позволяет получить текстовое представление поля 
